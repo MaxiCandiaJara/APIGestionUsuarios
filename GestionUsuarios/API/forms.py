@@ -7,6 +7,6 @@ class UsuarioForms(forms.ModelForm):
     class Meta:
 
         model = Usuario
-        fields = ['nombre', 'apellido']
+        fields = ['nombre', 'apellidos', 'password']
 
 

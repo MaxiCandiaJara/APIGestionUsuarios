@@ -6,7 +6,7 @@ from .models import Usuario
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
 
-    list_display = ['id', 'nombre', 'apellidos', 'rol']
+    list_display = ['id', 'nombre', 'apellidos', 'rol', 'password']
 
     search_fields = ['nombre',]
 

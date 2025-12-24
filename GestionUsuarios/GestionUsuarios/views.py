@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from API import forms
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
-def base(request):
+def main(request):
     
-    return render(request, "base.html")
+    form = forms.UsuarioForms(request.POST)
+
+
+
+    return render(request, "main.html")

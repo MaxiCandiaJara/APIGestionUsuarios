@@ -1,21 +1,10 @@
-from django.shortcuts import render
-from .serializers import UsuarioSerializer
-from rest_framework import generics, permissions 
-from rest_framework.response import Response 
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 from .models import Usuario
-from rest_framework.decorators import api_view, permission_classes 
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from .permissions import EsAdmin
-# Create your views here.
+from .serializers import UsuarioSerializer
+from .permissions import EsAdminOReadOnly
 
-
-@api_view(['GET'])
-@permission_classes([EsAdmin])
-
-def usuarios_admin(request):
-
-    usuarios = Usuario.objects.all()
-    serializer = UsuarioSerializer(usuarios, many = True)
-
-    return Response(serializer.data)
-    
+class UsuarioViewSet(ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+    permission_classes = [IsAuthenticated, EsAdminOReadOnly]

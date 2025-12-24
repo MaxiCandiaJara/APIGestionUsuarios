@@ -15,7 +15,6 @@ class Usuario(AbstractUser):
     nombre = models.CharField(max_length=20)
     apellidos = models.CharField(max_length=40)
     rol = models.CharField(max_length=20, choices=ROLES, default='user')
-
     def __str__(self):
 
         info = f'{self.nombre} {self.apellidos} ({self.rol})'
